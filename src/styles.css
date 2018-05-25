@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css'; /* You can add global styles to this file, and also import other style files */
+h2 {
+  color: #444;
+  font-weight: lighter;
+}
+
+.body-margin {
+  margin: 2em;
+}
+
+body, input[text], button {
+  color: #888;
+  font-family: Cambria, Georgia, sans-serif;
+}
+
+button {
+  padding: 0.2em;
+  font-size: 14px
+}
+
+* {
+  font-family: Arial;
+}
+
+html,body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
