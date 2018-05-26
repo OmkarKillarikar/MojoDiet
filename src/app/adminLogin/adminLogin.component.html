@@ -1,0 +1,20 @@
+<div fxLayout="column" fxLayoutAlign="center center" style="height: 100%">
+
+  <mat-card class="login-card">
+    <mat-card-title>Enter Credentials</mat-card-title>
+    <mat-card-content>
+      <div fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="10px">
+
+        <mat-form-field>
+          <input [(ngModel)]="userName" matInput placeholder="User Name">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input [(ngModel)]="password" matInput type="password" placeholder="Password"/>
+        </mat-form-field>
+        <button mat-button (click)="onSignIn()" class="background-orange">Sign in</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+

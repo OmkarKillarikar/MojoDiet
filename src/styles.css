@@ -1,4 +1,6 @@
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css'; /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
 h2 {
   color: #444;
   font-weight: lighter;
@@ -19,10 +21,10 @@ button {
 }
 
 * {
-  font-family: Arial;
+  font-family: Arial, sans-serif;
 }
 
-html,body {
+html, body {
   height: 100%;
   margin: 0;
   overflow: hidden;

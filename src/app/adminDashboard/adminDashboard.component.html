@@ -1,0 +1,68 @@
+<mat-tab-group style="height: 100%">
+  <mat-tab label="Show Dishes" class="padding-10">
+
+
+    <div class="padding-20">
+      <span class="margin-top-20" *ngIf="dishes==null || dishes.length==0"
+            style="min-height: 100px;">No Dishes Added</span>
+      <span class="margin-top-20 red" *ngIf="dishes!=null && dishes.length<7">
+        Add at least 7 Dishes to make this service available for Customers
+      </span>
+    </div>
+
+    <mat-grid-list *ngIf="dishes!=null && dishes.length>0" [cols]="6" rowHeight="4:2" class="padding-10">
+
+      <mat-grid-tile *ngFor="let dish of dishes">
+        <mat-card class="margin-5" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+          <img src="{{dish.image}}" class="img-list"/>
+
+          <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="5px">
+            <div>
+              <span class="font-small opacity-6">Name: </span>{{dish.name}}
+            </div>
+
+            <div>
+              <span class="font-small opacity-6">Price: </span>{{dish.price}}
+            </div>
+          </div>
+
+        </mat-card>
+      </mat-grid-tile>
+
+    </mat-grid-list>
+
+  </mat-tab>
+
+  <mat-tab label="Add Dishes">
+    <div fxLayout="column" fxLayoutAlign="start center">
+      <mat-card class="login-card margin-5">
+
+        <div fxLayout="column" fxLayoutAlign="center center" style="height: 100%;width: 100%">
+
+          <mat-card-title style="border-bottom: 1px #CCCCCC;">Add Dish</mat-card-title>
+
+          <mat-card-content fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="10px">
+
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <img id="imgDish" style="height: 100px;width: 100px" src="{{img}}"/>
+
+              <input (change)="onImagePicked($event,dish)" type="file" accept="image/*">
+            </div>
+
+            <mat-form-field>
+              <input matInput type="text" placeholder="Dish Name" [(ngModel)]="dish.name">
+            </mat-form-field>
+
+            <mat-form-field>
+              <input matInput type="number" placeholder="Price" [(ngModel)]="dish.price">
+            </mat-form-field>
+
+            <button style="background-color: orange" mat-button (click)="addDish()">Add Dish</button>
+          </mat-card-content>
+
+        </div>
+
+      </mat-card>
+    </div>
+  </mat-tab>
+</mat-tab-group>

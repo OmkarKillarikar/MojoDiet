@@ -5,14 +5,14 @@ import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-dashboard',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  templateUrl: './adminLogin.component.html',
+  styleUrls: ['./adminLogin.component.css']
 })
-export class AdminComponent implements OnInit {
+export class AdminLoginComponent implements OnInit {
   userName: string;
   password: string;
 
-  constructor(private router: Router, public snackBar: MatSnackBar) {
+  constructor(private router: Router, private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -20,7 +20,9 @@ export class AdminComponent implements OnInit {
 
   onSignIn(): void {
     if (this.userName === 'admin' && this.password === 'MojoNetworks') {
-      this.snackBar.open('succ', null, {duration: 2000});
+      this.snackBar.open('Welcome Admin Mojo', null, {duration: 2000});
+      const link = ['/adminDashboard'];
+      this.router.navigate(link);
     } else {
       this.snackBar.open('Invalid credentials', null, {duration: 2000});
     }
