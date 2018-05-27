@@ -1,0 +1,10 @@
+@import '../../styles.css';
+
+.img-list {
+  height: 40px;
+  width: 40px;
+}
+
+.padding-10 {
+  padding: 10px;
+}

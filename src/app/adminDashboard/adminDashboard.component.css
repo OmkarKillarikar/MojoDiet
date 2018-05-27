@@ -1,45 +1,5 @@
-.login-card {
-  width: 40%;
-}
+@import '../../styles.css';
 
-.height-inherit {
-  height: inherit;
-}
-
-.margin-5 {
-  margin: 5px;
-}
-
-.padding-10 {
-  padding: 20px;
-}
-
-.opacity-6 {
-  opacity: .6;
-}
-
-.img-list {
-  height: 40px;
-  width: 40px;
-}
-
-.font-small {
-  font-size: small;
-}
-
-.margin-top-20 {
-  margin-top: 20px;
-}
-
-.padding-20 {
-  padding: 20px;
-}
-
-.red{
+.red {
   color: red;
-}
-
-.size-inherit{
-  height: inherit;
-  width: inherit;
 }

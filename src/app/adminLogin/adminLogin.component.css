@@ -1,17 +1,1 @@
-.login-card {
-  width: 40%;
-}
-
-.row {
-  flex-direction: row;
-}
-
-.column {
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-
-.background-orange {
-  background: orange;
-}
+@import '../../styles.css';

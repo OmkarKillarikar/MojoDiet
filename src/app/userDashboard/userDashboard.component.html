@@ -1,0 +1,75 @@
+<mat-tab-group style="height: 100%">
+  <mat-tab label="Available Dishes" class="padding-10">
+
+
+    <div class="padding-20">
+      <span class="margin-top-20" *ngIf="dishes==null || dishes.length==0"
+            style="min-height: 100px;">No Dishes Added</span>
+      <span class="margin-top-20 red" *ngIf="dishes!=null && dishes.length<7">
+        Add at least 7 Dishes to make this service available for Customers
+      </span>
+    </div>
+
+    <app-dish-grid [dishes]="dishes"></app-dish-grid>
+
+  </mat-tab>
+
+  <mat-tab label="Plan Your Diet">
+    <div fxLayout="column" fxLayoutAlign="start center">
+      <mat-card class="login-card margin-5">
+
+        <div fxLayout="column" fxLayoutAlign="start start" style="height: 100%;width: 100%">
+
+          <div fxLayout="row" fxLayoutAlign="space-between center" class="width-inherit">
+            <mat-card-subtitle fxLayout="row" fxLayoutAlign="start center" fxFlex="70" class="margin-0">
+              Select dishes for upcoming week
+            </mat-card-subtitle>
+            <div fxFlex="30" fxLayout="row" fxLayoutAlign="space-between end">
+              <span class="opacity-6 font-small">Total cost:   </span>
+              <span>{{totalCost}} Rs.</span>
+            </div>
+          </div>
+
+          <mat-card-content fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px"
+                            class="margin-top-15 size-inherit">
+
+            <div *ngFor="let diet of diets;let i = index" style="height: 45px;" class="width-inherit">
+
+              <div fxLayout="row" fxLayoutAlign="space-between center" class="width-inherit" style="height: 45px;">
+
+                <span>{{diet.date | date:'fullDate'}}</span>
+
+                <mat-form-field style="margin-bottom: -10px" *ngIf="!diet.dish">
+
+                  <mat-select placeholder="food for {{diet.date|date:'EEEE'}}" [(value)]="diet.dish"
+                              (selectionChange)="onDishSelected(diet.dish)">
+
+                    <mat-option>None</mat-option>
+
+                    <mat-option *ngFor="let dish of dishesToSelect" [value]="dish">
+                      {{dish.name}} - Rs.{{dish.price}}
+                    </mat-option>
+                  </mat-select>
+
+                </mat-form-field>
+
+                <div *ngIf="diet.dish" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="end center"
+                     class="selected-dish" matTooltip="Delete" [matTooltipPosition]="'left'"
+                     (click)="onDishDeleted(i,diet.dish)">
+
+                  <span>{{diet.dish.name}} | Rs. {{diet.dish.price}}</span>
+                  <mat-icon>delete</mat-icon>
+
+                </div>
+
+              </div>
+              <mat-divider></mat-divider>
+            </div>
+          </mat-card-content>
+
+        </div>
+
+      </mat-card>
+    </div>
+  </mat-tab>
+</mat-tab-group>

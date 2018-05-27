@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Router} from '@angular/router';
-import {MatSnackBar} from '@angular/material';
+import {SnackBarService} from '../services/SnackBarService';
 
 
 @Component({
@@ -8,23 +8,20 @@ import {MatSnackBar} from '@angular/material';
   templateUrl: './adminLogin.component.html',
   styleUrls: ['./adminLogin.component.css']
 })
-export class AdminLoginComponent implements OnInit {
+export class AdminLoginComponent {
   userName: string;
   password: string;
 
-  constructor(private router: Router, private snackBar: MatSnackBar) {
-  }
-
-  ngOnInit(): void {
+  constructor(private router: Router, private snackService: SnackBarService) {
   }
 
   onSignIn(): void {
     if (this.userName === 'admin' && this.password === 'MojoNetworks') {
-      this.snackBar.open('Welcome Admin Mojo', null, {duration: 2000});
+      this.snackService.showSnackBar('Welcome Admin Mojo');
       const link = ['/adminDashboard'];
       this.router.navigate(link);
     } else {
-      this.snackBar.open('Invalid credentials', null, {duration: 2000});
+      this.snackService.showSnackBar('Invalid credentials');
     }
   }
 }

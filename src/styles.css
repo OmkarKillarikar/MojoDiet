@@ -12,7 +12,7 @@ h2 {
 
 body, input[text], button {
   color: #888;
-  font-family: Cambria, Georgia, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
 button {
@@ -27,5 +27,60 @@ button {
 html, body {
   height: 100%;
   margin: 0;
-  overflow: hidden;
 }
+
+* {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+                                   supported by Chrome and Opera */
+}
+
+.padding-20 {
+  padding: 20px;
+}
+
+.size-inherit {
+  height: 100%;
+  width: 100%;
+}
+
+.font-small {
+  font-size: small;
+}
+
+.height-inherit {
+  height: 100%;
+}
+
+.margin-5 {
+  margin: 5px;
+}
+
+.padding-10 {
+  padding: 20px;
+}
+
+.opacity-6 {
+  opacity: .6;
+}
+
+.login-card {
+  width: 40%;
+}
+
+.background-orange {
+  background: orange;
+}
+
+.font-x-large {
+  font-size: x-large;
+}
+
+.margin-top-20 {
+  margin-top: 20px;
+}
+

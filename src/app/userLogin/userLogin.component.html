@@ -1,0 +1,37 @@
+<div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px" style="height: 100%">
+
+  <mat-card class="user-login-card">
+    <mat-card-title>New on MojoDiet? Register here</mat-card-title>
+    <mat-card-content>
+      <div fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="10px">
+
+        <mat-form-field>
+          <input [(ngModel)]="newCred.userName" matInput placeholder="User Name">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input [(ngModel)]="newCred.password" matInput type="password" placeholder="Password"/>
+        </mat-form-field>
+        <button mat-button (click)="saveUserCredentials()" class="background-orange">Register</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="user-login-card">
+    <mat-card-title>Sign in to order food</mat-card-title>
+    <mat-card-content>
+      <div fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="10px">
+
+        <mat-form-field>
+          <input [(ngModel)]="loginCred.userName" matInput placeholder="User Name">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input [(ngModel)]="loginCred.password" matInput type="password" placeholder="Password"/>
+        </mat-form-field>
+        <button mat-button (click)="userSignIn()" class="background-orange">Sign in</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
