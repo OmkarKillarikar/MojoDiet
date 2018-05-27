@@ -2,18 +2,24 @@
 
   <mat-grid-tile *ngFor="let dish of dishes" [class.mat-elevation-z2]="true">
 
-    <mat-card class="size-inherit" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
-      <img src="{{dish.image}}" class="img-list"/>
+    <mat-card class="size-inherit" fxLayout="row" fxLayoutAlign="space-between center">
 
-      <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="5px">
-        <div>
-          <span class="font-small opacity-6">Name: </span>{{dish.name}}
-        </div>
+      <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+        <img src="{{dish.image}}" class="img-list"/>
 
-        <div>
-          <span class="font-small opacity-6">Price: </span>{{dish.price}}
+        <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="5px">
+          <div>
+            <span class="font-small opacity-6">Name: </span>{{dish.name}}
+          </div>
+
+          <div>
+            <span class="font-small opacity-6">Price: </span>{{dish.price}}
+          </div>
         </div>
       </div>
+
+      <mat-icon (click)="onDishDeleted(dish)" class="selected-dish" matTooltip="delete" *ngIf="allowDelete">delete
+      </mat-icon>
 
     </mat-card>
   </mat-grid-tile>

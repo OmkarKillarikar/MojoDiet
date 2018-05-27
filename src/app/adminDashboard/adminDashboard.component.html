@@ -12,7 +12,7 @@
 
     </div>
 
-    <app-dish-grid [dishes]="dishes"></app-dish-grid>
+    <app-dish-grid [dishes]="dishes" [allowDelete]="true" (invalidateDishesData)="invalidateDishes()"></app-dish-grid>
 
   </mat-tab>
 
@@ -29,7 +29,7 @@
             <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
               <img id="imgDish" style="height: 100px;width: 100px" src="{{img}}"/>
 
-              <input #fileChooser (change)="onImagePicked($event,dish)" type="file" accept="image/*">
+              <input #fileChooser (change)="onImagePicked($event)" type="file" accept="image/*">
             </div>
 
             <mat-form-field>

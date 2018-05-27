@@ -10,13 +10,14 @@ import {
   MatCheckboxModule,
   MatFormFieldModule,
   MatGridListModule,
+  MatIconModule,
   MatInputModule,
   MatListModule,
+  MatSelectModule,
   MatSnackBarModule,
   MatTabsModule,
   MatToolbarModule,
-  MatSelectModule,
-  MatIconModule, MatTooltipModule
+  MatTooltipModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AdminLoginComponent} from './adminLogin/adminLogin.component';

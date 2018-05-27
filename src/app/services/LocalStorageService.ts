@@ -33,6 +33,25 @@ export class LocalStorageService {
     }
   }
 
+  deleteDish(data: Dish): void {
+    try {
+      let dishes: Dish[];
+      dishes = JSON.parse(localStorage.getItem(this.DISH_KEY));
+      if (dishes == null) {
+        return;
+      }
+      for (let i = 0; i < dishes.length; i++) {
+        if (dishes[i].name === data.name) {
+          dishes.splice(i, 1);
+          break;
+        }
+      }
+      localStorage.setItem(this.DISH_KEY, JSON.stringify(dishes));
+    } catch (e) {
+      console.error('Error saving to localStorage', e);
+    }
+  }
+
   saveUserCredentials(data: UserCredentials): boolean {
     try {
       let userCreds: UserCredentials[];

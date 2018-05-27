@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef} from '@angular/core';
+import {Component, ElementRef} from '@angular/core';
 import {Router} from '@angular/router';
 import {Dish} from '../models/dish';
 import {LocalStorageService} from '../services/LocalStorageService';
@@ -11,7 +11,7 @@ import {Diet} from '../models/Diet';
   templateUrl: './userDashboard.component.html',
   styleUrls: ['./userDashboard.component.css']
 })
-export class UserDashboardComponent implements AfterViewInit {
+export class UserDashboardComponent {
   img: string;
   dishes: Array<Dish>;
   dishesToSelect: Array<Dish>;
@@ -24,6 +24,7 @@ export class UserDashboardComponent implements AfterViewInit {
     , private element: ElementRef
     , private dishService: LocalStorageService
     , private snackService: SnackBarService) {
+    this.invalidateDishes();
     this.img = this.IMG_PLACEHOLDER;
     this.diets = [];
     this.initWeek();
@@ -54,9 +55,6 @@ export class UserDashboardComponent implements AfterViewInit {
     }
   }
 
-  ngAfterViewInit(): void {
-    this.invalidateDishes();
-  }
 
   private invalidateDishes(): void {
     this.dishes = this.dishService.getDishes();
@@ -84,7 +82,7 @@ export class UserDashboardComponent implements AfterViewInit {
     if (this.diets != null) {
       for (let i = 0; i < this.diets.length; i++) {
         if (this.diets[i].dish != null) {
-          cost = cost + this.diets[i].dish.price;
+          cost = cost + parseInt(this.diets[i].dish.price, 10);
         }
       }
     }
