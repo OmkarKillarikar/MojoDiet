@@ -1,13 +1,12 @@
 <mat-tab-group style="height: 100%">
   <mat-tab label="Show Dishes" class="padding-10">
 
-    <div class="padding-20">
+    <div class="padding-20" fxLayout="column" fxLayoutGap="20px">
 
-      <span class="margin-top-20" *ngIf="dishes?.length==0"
-            style="min-height: 100px;">No Dishes Added</span>
+      <span *ngIf="dishes?.length==0">No Dishes Added</span>
 
-      <span class="margin-top-20 red" *ngIf="dishes!=null && dishes?.length<7">
-        Add at least 7 Dishes to make this service available for Customers
+      <span class=" red" *ngIf="dishes!=null && dishes?.length<7">
+      Add at least 7 Dishes to make this service available for Customers
       </span>
 
     </div>
@@ -39,6 +38,11 @@
             <mat-form-field>
               <input matInput type="number" placeholder="Price" [(ngModel)]="dish.price">
             </mat-form-field>
+
+            <mat-radio-group [(ngModel)]="dish.type" fxLayoutGap="20px">
+              <mat-radio-button value="Starter">Starter</mat-radio-button>
+              <mat-radio-button value="Main Course">Main Course</mat-radio-button>
+            </mat-radio-group>
 
             <button style="background-color: orange" mat-button (click)="addDish()">Add Dish</button>
           </mat-card-content>

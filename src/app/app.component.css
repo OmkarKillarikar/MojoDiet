@@ -1,9 +1,10 @@
 .header-bar {
-  background-color: rgb(0,120,215);
+  background-color: rgb(0, 120, 215);
   height: 4px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
 h1 {
   font-size: 1.2em;
   color: #555;

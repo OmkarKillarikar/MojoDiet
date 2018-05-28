@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
-import {DashboardComponent} from './dashboard/dashboard.component';
+import {DashboardComponent} from '../selectUser/selectUser.component';
 import {
   MatButtonModule,
   MatCardModule,
@@ -13,6 +13,7 @@ import {
   MatIconModule,
   MatInputModule,
   MatListModule,
+  MatRadioModule,
   MatSelectModule,
   MatSnackBarModule,
   MatTabsModule,
@@ -20,15 +21,15 @@ import {
   MatTooltipModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {AdminLoginComponent} from './adminLogin/adminLogin.component';
+import {AdminLoginComponent} from '../adminLogin/adminLogin.component';
 import {FormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {AdminDashboardComponent} from './adminDashboard/adminDashboard.component';
-import {LocalStorageService} from './services/LocalStorageService';
-import {UserLoginComponent} from './userLogin/userLogin.component';
-import {SnackBarService} from './services/SnackBarService';
-import {DishGridListComponent} from './dishGridList/dishGridList.component';
-import {UserDashboardComponent} from './userDashboard/userDashboard.component';
+import {AdminDashboardComponent} from '../adminDashboard/adminDashboard.component';
+import {StorageService} from '../services/storageService';
+import {UserLoginComponent} from '../userLogin/userLogin.component';
+import {SnackBarService} from '../services/snackBarService';
+import {DishGridListComponent} from '../dishGridList/dishGridList.component';
+import {UserDashboardComponent} from '../userDashboard/userDashboard.component';
 
 
 @NgModule({
@@ -59,9 +60,10 @@ import {UserDashboardComponent} from './userDashboard/userDashboard.component';
     MatInputModule,
     MatSelectModule,
     MatIconModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatRadioModule
   ],
-  providers: [LocalStorageService, SnackBarService],
+  providers: [StorageService, SnackBarService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

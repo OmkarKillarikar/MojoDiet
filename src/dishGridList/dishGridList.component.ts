@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 import {Dish} from '../models/dish';
-import {LocalStorageService} from '../services/LocalStorageService';
+import {StorageService} from '../services/storageService';
 
 @Component({
   selector: 'app-dish-grid',
@@ -9,11 +9,11 @@ import {LocalStorageService} from '../services/LocalStorageService';
   styleUrls: ['./dishGridList.component.css']
 })
 export class DishGridListComponent {
-  @Input() dishes: Array<Dish>;
-  @Input() allowDelete: boolean;
-  @Output() invalidateDishesData = new EventEmitter();
+  @Input() private dishes: Array<Dish>;
+  @Input() private allowDelete: boolean;
+  @Output() private invalidateDishesData = new EventEmitter();
 
-  constructor(private storageService: LocalStorageService) {
+  constructor(private storageService: StorageService) {
     this.allowDelete = false;
     this.dishes = [];
   }

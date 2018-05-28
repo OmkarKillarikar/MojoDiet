@@ -15,6 +15,10 @@
           <div>
             <span class="font-small opacity-6">Price: </span>{{dish.price}}
           </div>
+
+          <div *ngIf="dish.type">
+            <span class="font-small opacity-6">type: </span>{{dish.type}}
+          </div>
         </div>
       </div>
 

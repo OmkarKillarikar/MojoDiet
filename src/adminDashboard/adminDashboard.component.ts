@@ -1,27 +1,30 @@
 import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {Dish} from '../models/dish';
-import {LocalStorageService} from '../services/LocalStorageService';
-import {SnackBarService} from '../services/SnackBarService';
+import {StorageService} from '../services/storageService';
+import {SnackBarService} from '../services/snackBarService';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './adminDashboard.component.html',
-  styleUrls: ['./adminDashboard.component.css']
+  styleUrls: ['./adminDashboard.component.css'],
 })
 
 export class AdminDashboardComponent implements AfterViewInit {
-  img: string;
-  dish: Dish;
-  dishes: Array<Dish> = [];
-  IMG_PLACEHOLDER = '././assets/ic_food_placeholder.png';
-  elementImg;
+  private img: string;
+  private dish: Dish;
+  private dishes: Array<Dish> = [];
+  private IMG_PLACEHOLDER = '././assets/ic_food_placeholder.png';
+  private elementImg;
   @ViewChild('fileChooser') fileChooser: any;
 
   constructor(private router: Router
     , private element: ElementRef
-    , private dishService: LocalStorageService
+    , private storageService: StorageService
     , private snackService: SnackBarService) {
+    if (!storageService.isAdminLoggedIn()) {
+      router.navigate(['/']);
+    }
     this.dish = new Dish();
     this.img = this.IMG_PLACEHOLDER;
     this.invalidateDishes();
@@ -45,16 +48,22 @@ export class AdminDashboardComponent implements AfterViewInit {
 
   addDish() {
     if (this.dish.price && this.dish.image && this.dish.name) {
-      this.dishService.addDish(this.dish);
-      this.dish = new Dish();
-      this.elementImg.src = this.IMG_PLACEHOLDER;
-      this.fileChooser.nativeElement.value = '';
-      this.invalidateDishes();
-      this.snackService.showSnackBar('Dish added!');
+      const isAdded = this.storageService.addDish(this.dish);
+      if (isAdded) {
+        this.dish = new Dish();
+        this.elementImg.src = this.IMG_PLACEHOLDER;
+        this.fileChooser.nativeElement.value = '';
+        this.invalidateDishes();
+        this.snackService.showSnackBar('Dish added!');
+      } else {
+        this.snackService.showSnackBar(this.dish.name + ' already exists');
+      }
+    } else {
+      this.snackService.showSnackBar('Please make sure all data is entered');
     }
   }
 
   invalidateDishes() {
-    this.dishes = this.dishService.getDishes();
+    this.dishes = this.storageService.getDishes();
   }
 }

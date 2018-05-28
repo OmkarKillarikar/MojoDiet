@@ -3,18 +3,15 @@
 
 
     <div class="padding-20">
-      <span class="margin-top-20" *ngIf="dishes==null || dishes.length==0"
-            style="min-height: 100px;">No Dishes Added</span>
-      <span class="margin-top-20 red" *ngIf="dishes!=null && dishes.length<7">
-        Add at least 7 Dishes to make this service available for Customers
-      </span>
+      <span class="margin-top-20 red" *ngIf="dishes==null || dishes.length<7"
+            style="min-height: 100px;">This service is not available yet</span>
     </div>
 
-    <app-dish-grid [dishes]="dishes"></app-dish-grid>
+    <app-dish-grid *ngIf="dishes!=null && dishes.length>6" [dishes]="dishes"></app-dish-grid>
 
   </mat-tab>
 
-  <mat-tab label="Plan Your Diet">
+  <mat-tab label="Plan Your Diet" disabled="{{dishes==null || dishes.length<6}}">
     <div fxLayout="column" fxLayoutAlign="start center">
       <mat-card class="login-card margin-5">
 
@@ -66,7 +63,9 @@
               <mat-divider></mat-divider>
             </div>
           </mat-card-content>
-
+          <div fxLayout="row" fxLayoutAlign="end" class="width-inherit">
+            <button mat-button class="background-orange" (click)="saveDiet()">Save Diet Plan</button>
+          </div>
         </div>
 
       </mat-card>

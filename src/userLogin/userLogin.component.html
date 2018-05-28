@@ -1,0 +1,51 @@
+<div style="height: 100%" fxLayoutAlign="center center">
+
+  <mat-card class="user-login-card" *ngIf="!isLogin" [@enterAnimationSignUpCard]
+            style="margin: 0 auto; position: absolute">
+    <mat-card-title class="font-medium">New on MojoDiet? Register here</mat-card-title>
+    <mat-card-content>
+      <div fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="10px">
+
+        <mat-form-field appearance="outline">
+          <mat-label>User Name</mat-label>
+          <input [(ngModel)]="newCred.userName" matInput placeholder="">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input [(ngModel)]="newCred.password" matInput type="password" placeholder=""/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Confirm Password</mat-label>
+          <input [(ngModel)]="verifyPassword" matInput type="password" placeholder=""/>
+        </mat-form-field>
+
+        <button mat-button (click)="saveUserCredentials()" class="background-orange">Register</button>
+        <span class="margin-top-15 clickable-text" (click)="isLogin = !isLogin">Already a member? Sign in</span>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="user-login-card" *ngIf="isLogin" [@enterAnimationSignInCard]
+            style="margin: 0 auto;position: absolute">
+    <mat-card-title class="font-medium">Sign in to order food</mat-card-title>
+    <mat-card-content>
+      <div fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="10px">
+
+        <mat-form-field appearance="outline">
+          <mat-label>User Name</mat-label>
+          <input [(ngModel)]="loginCred.userName" matInput placeholder="">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input [(ngModel)]="loginCred.password" matInput type="password" placeholder=""/>
+        </mat-form-field>
+        <button mat-button (click)="userSignIn()" class="background-orange">Sign in</button>
+        <span class="margin-top-15 clickable-text" (click)="isLogin = !isLogin">New on MojoDiet? Register here</span>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+

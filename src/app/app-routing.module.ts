@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {DashboardComponent} from './dashboard/dashboard.component';
-import {AdminLoginComponent} from './adminLogin/adminLogin.component';
-import {AdminDashboardComponent} from './adminDashboard/adminDashboard.component';
-import {UserLoginComponent} from './userLogin/userLogin.component';
-import {UserDashboardComponent} from './userDashboard/userDashboard.component';
+import {DashboardComponent} from '../selectUser/selectUser.component';
+import {AdminLoginComponent} from '../adminLogin/adminLogin.component';
+import {AdminDashboardComponent} from '../adminDashboard/adminDashboard.component';
+import {UserLoginComponent} from '../userLogin/userLogin.component';
+import {UserDashboardComponent} from '../userDashboard/userDashboard.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},

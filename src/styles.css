@@ -29,6 +29,11 @@ html, body {
   margin: 0;
 }
 
+body {
+  background: url("assets/app_bkg.jpg") no-repeat;
+  background-size: 100%;
+}
+
 * {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
@@ -50,6 +55,10 @@ html, body {
 
 .font-small {
   font-size: small;
+}
+
+.font-medium {
+  font-size: medium;
 }
 
 .height-inherit {
@@ -91,6 +100,12 @@ html, body {
 
 mat-icon {
   font-family: 'Material Icons' !important;
+}
+
+.align-right {
+  float: right;
+  position: relative;
+  display: block;
 }
 
 .selected-dish:hover {
