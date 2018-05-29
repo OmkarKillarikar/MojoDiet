@@ -16,8 +16,8 @@ The app will automatically reload if you change any of the source files.
 
 ## Build
 
-Angular CLI is used as packaging tool which takes care of minifying, uglifying code
-and uses webpack under the hood 
+Angular CLI is used as packaging tool which takes care of **minifying, uglifying** code
+and **uses webpack** under the hood 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 Use the `--prod` flag for a production build.
@@ -29,7 +29,7 @@ or any other server of your choice.
 e.g `http://192.168.1.92:8080/mojoDiet`
 
 ## Project functionality
-##### Admin section:
+#### Admin section:
 * Fixed credentials (admin/MojoNetworks).
 * Login session handled, will be automatically logged out once browser is closed.
 * After logging Two tabs are shown on dashboard (Show dishes and Add Dish):
@@ -42,7 +42,7 @@ e.g `http://192.168.1.92:8080/mojoDiet`
       optional parameter dish type (Started/Main course),
       * Dishes with duplicate names not allowed.
     
-##### Customer user section:
+#### Customer user section:
 * User can register with credentials of his choice.
 * Login using registered credentials.
 * After logging Two tabs are shown on dashboard 
