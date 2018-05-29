@@ -30,8 +30,13 @@ html, body {
 }
 
 body {
-  background: url("assets/app_bkg.jpg") no-repeat;
+  min-height: 600px;
+  min-width: 1000px;
+  background: url("assets/app_bkg.jpg") no-repeat center center fixed;
   background-size: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
 }
 
 * {

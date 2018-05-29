@@ -3,9 +3,9 @@
 
     <div class="padding-20" fxLayout="column" fxLayoutGap="20px">
 
-      <span *ngIf="dishes?.length==0">No Dishes Added</span>
+      <span *ngIf="dishes==null || dishes?.length==0">No Dishes Added</span>
 
-      <span class=" red" *ngIf="dishes!=null && dishes?.length<7">
+      <span class=" red" *ngIf="dishes==null || dishes?.length<7">
       Add at least 7 Dishes to make this service available for Customers
       </span>
 

@@ -13,7 +13,7 @@ export class StorageService {
   addDish(data: Dish): boolean {
     try {
       let dishes: Dish[];
-      dishes = JSON.parse(localStorage.getItem(Constants.DISH_KEY));
+      dishes = JSON.parse(localStorage.getItem(Constants.LocalStorageKeys.DISH_KEY));
       if (dishes == null) {
         dishes = Array<Dish>();
       } else {
@@ -24,18 +24,18 @@ export class StorageService {
         }
       }
       dishes.push(data);
-      localStorage.setItem(Constants.DISH_KEY, JSON.stringify(dishes));
+      localStorage.setItem(Constants.LocalStorageKeys.DISH_KEY, JSON.stringify(dishes));
       return true;
     } catch (e) {
-      console.error(Constants.ERROR_MESSAGE, e);
+      console.error(Constants.Messages.ERROR_MESSAGE, e);
     }
   }
 
   getDishes(): Dish[] {
     try {
-      return JSON.parse(localStorage.getItem(Constants.DISH_KEY));
+      return JSON.parse(localStorage.getItem(Constants.LocalStorageKeys.DISH_KEY));
     } catch (e) {
-      console.error('Error getting data from localStorage', e);
+      console.error(Constants.Messages.ERROR_MESSAGE, e);
       return null;
     }
   }
@@ -43,7 +43,7 @@ export class StorageService {
   deleteDish(data: Dish): void {
     try {
       let dishes: Dish[];
-      dishes = JSON.parse(localStorage.getItem(Constants.DISH_KEY));
+      dishes = JSON.parse(localStorage.getItem(Constants.LocalStorageKeys.DISH_KEY));
       if (dishes == null) {
         return;
       }
@@ -53,16 +53,16 @@ export class StorageService {
           break;
         }
       }
-      localStorage.setItem(Constants.DISH_KEY, JSON.stringify(dishes));
+      localStorage.setItem(Constants.LocalStorageKeys.DISH_KEY, JSON.stringify(dishes));
     } catch (e) {
-      console.error(Constants.ERROR_MESSAGE, e);
+      console.error(Constants.Messages.ERROR_MESSAGE, e);
     }
   }
 
   saveUserCredentials(data: UserCredentials): boolean {
     try {
       let userCreds: UserCredentials[];
-      userCreds = JSON.parse(localStorage.getItem(Constants.USER_CREDENTIALS_KEY));
+      userCreds = JSON.parse(localStorage.getItem(Constants.LocalStorageKeys.USER_CREDENTIALS_KEY));
       if (userCreds == null) {
         userCreds = Array<UserCredentials>();
       } else {
@@ -74,16 +74,16 @@ export class StorageService {
         }
       }
       userCreds.push(data);
-      localStorage.setItem(Constants.USER_CREDENTIALS_KEY, JSON.stringify(userCreds));
+      localStorage.setItem(Constants.LocalStorageKeys.USER_CREDENTIALS_KEY, JSON.stringify(userCreds));
       return true;
     } catch (e) {
-      console.error(Constants.ERROR_MESSAGE, e);
+      console.error(Constants.Messages.ERROR_MESSAGE, e);
     }
   }
 
   validateUserCredentials(data: UserCredentials): boolean {
     try {
-      const userCreds = JSON.parse(localStorage.getItem(Constants.USER_CREDENTIALS_KEY));
+      const userCreds = JSON.parse(localStorage.getItem(Constants.LocalStorageKeys.USER_CREDENTIALS_KEY));
       if (userCreds == null) {
         return false;
       } else {
@@ -96,65 +96,80 @@ export class StorageService {
         return false;
       }
     } catch (e) {
-      console.error(Constants.ERROR_MESSAGE, e);
+      console.error(Constants.Messages.ERROR_MESSAGE, e);
     }
   }
 
   setLoggedInUser(data: UserCredentials) {
     try {
-      localStorage.setItem(Constants.LOGGED_IN_USER, JSON.stringify(data));
+      localStorage.setItem(Constants.LocalStorageKeys.LOGGED_IN_USER, JSON.stringify(data));
     } catch (e) {
-      console.error(Constants.ERROR_MESSAGE, e);
+      console.error(Constants.Messages.ERROR_MESSAGE, e);
     }
   }
 
   getLoggedInUser(): UserCredentials {
     try {
-      return JSON.parse(localStorage.getItem(Constants.LOGGED_IN_USER));
+      return JSON.parse(localStorage.getItem(Constants.LocalStorageKeys.LOGGED_IN_USER));
     } catch (e) {
-      console.error(Constants.ERROR_MESSAGE, e);
+      console.error(Constants.Messages.ERROR_MESSAGE, e);
     }
   }
 
   clearUserLogin(): void {
     try {
-      localStorage.removeItem(Constants.LOGGED_IN_USER);
+      localStorage.removeItem(Constants.LocalStorageKeys.LOGGED_IN_USER);
     } catch (e) {
-      console.error(Constants.ERROR_MESSAGE, e);
+      console.error(Constants.Messages.ERROR_MESSAGE, e);
     }
   }
 
   saveDietPlan(data: Diet[]) {
     try {
-      const dietKey = Constants.DIET_PREFIX + this.getLoggedInUser().userName;
+      const dietKey = Constants.LocalStorageKeys.DIET_PREFIX + this.getLoggedInUser().userName;
       localStorage.setItem(dietKey, JSON.stringify(data));
     } catch (e) {
-      console.error(Constants.ERROR_MESSAGE, e);
+      console.error(Constants.Messages.ERROR_MESSAGE, e);
     }
   }
 
   getDietPlan(): Diet[] {
     try {
-      const dietKey = Constants.DIET_PREFIX + this.getLoggedInUser().userName;
-      return JSON.parse(localStorage.getItem(dietKey));
+      const current = new Date();
+      const dietKey = Constants.LocalStorageKeys.DIET_PREFIX + this.getLoggedInUser().userName;
+      const diets: Diet[] = JSON.parse(localStorage.getItem(dietKey));
+      const dietStartDate = new Date(diets[0].date);
+      console.log(current.getFullYear());
+      if ((dietStartDate.getFullYear() < current.getFullYear())
+        || (dietStartDate.getMonth() < current.getMonth())
+        || (dietStartDate.getDay() < current.getDay())) {
+        localStorage.removeItem(dietKey);
+        return;
+      }
+      return diets;
     } catch (e) {
-      console.error(Constants.ERROR_MESSAGE, e);
+      console.error(Constants.Messages.ERROR_MESSAGE, e);
+      return;
     }
   }
 
-  adminLoggedIn(): void {
+  adminLoggedIn(login: boolean): void {
     try {
-      sessionStorage.setItem(Constants.ADMIN_LOGGED_IN, 'true');
+      if (login) {
+        sessionStorage.setItem(Constants.LocalStorageKeys.ADMIN_LOGGED_IN, 'true');
+      } else {
+        sessionStorage.removeItem(Constants.LocalStorageKeys.ADMIN_LOGGED_IN);
+      }
     } catch (e) {
-      console.error(Constants.ERROR_MESSAGE, e);
+      console.error(Constants.Messages.ERROR_MESSAGE, e);
     }
   }
 
   isAdminLoggedIn(): string {
     try {
-      return sessionStorage.getItem(Constants.ADMIN_LOGGED_IN);
+      return sessionStorage.getItem(Constants.LocalStorageKeys.ADMIN_LOGGED_IN);
     } catch (e) {
-      console.error(Constants.ERROR_MESSAGE, e);
+      console.error(Constants.Messages.ERROR_MESSAGE, e);
       return;
     }
   }

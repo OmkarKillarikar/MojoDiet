@@ -1,9 +1,8 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center;height: 80%">
-  <mat-toolbar color="primary">
-    {{ title }}
+  <mat-toolbar color="primary" [class.mat-elevation-z4]="true" fxLayout="row" fxLayoutAlign="space-between center">
+    <span>{{ title }}</span>
+    <button class="color-orange-red" *ngIf="showLogoutButton()" (click)="logout()" mat-button>Logout</button>
   </mat-toolbar>
   <div class="header-bar"></div>
   <router-outlet></router-outlet>
 </div>
-

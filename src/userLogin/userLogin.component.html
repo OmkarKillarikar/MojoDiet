@@ -8,17 +8,19 @@
 
         <mat-form-field appearance="outline">
           <mat-label>User Name</mat-label>
-          <input [(ngModel)]="newCred.userName" matInput placeholder="">
+          <input (keyup.enter)="saveUserCredentials()" [(ngModel)]="newCred.userName" matInput placeholder="">
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Password</mat-label>
-          <input [(ngModel)]="newCred.password" matInput type="password" placeholder=""/>
+          <input (keyup.enter)="saveUserCredentials()" [(ngModel)]="newCred.password" matInput type="password"
+                 placeholder=""/>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Confirm Password</mat-label>
-          <input [(ngModel)]="verifyPassword" matInput type="password" placeholder=""/>
+          <input (keyup.enter)="saveUserCredentials()" [(ngModel)]="verifyPassword" matInput type="password"
+                 placeholder=""/>
         </mat-form-field>
 
         <button mat-button (click)="saveUserCredentials()" class="background-orange">Register</button>
@@ -35,12 +37,13 @@
 
         <mat-form-field appearance="outline">
           <mat-label>User Name</mat-label>
-          <input [(ngModel)]="loginCred.userName" matInput placeholder="">
+          <input (keyup.enter)="userSignIn()" [(ngModel)]="loginCred.userName" matInput placeholder="">
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Password</mat-label>
-          <input [(ngModel)]="loginCred.password" matInput type="password" placeholder=""/>
+          <input (keyup.enter)="userSignIn()" [(ngModel)]="loginCred.password" matInput type="password"
+                 placeholder=""/>
         </mat-form-field>
         <button mat-button (click)="userSignIn()" class="background-orange">Sign in</button>
         <span class="margin-top-15 clickable-text" (click)="isLogin = !isLogin">New on MojoDiet? Register here</span>

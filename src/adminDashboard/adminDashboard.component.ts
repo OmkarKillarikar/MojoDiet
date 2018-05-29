@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {Dish} from '../models/dish';
 import {StorageService} from '../services/storageService';
 import {SnackBarService} from '../services/snackBarService';
+import {Constants} from '../utils/constants';
 
 @Component({
   selector: 'app-dashboard',
@@ -54,12 +55,12 @@ export class AdminDashboardComponent implements AfterViewInit {
         this.elementImg.src = this.IMG_PLACEHOLDER;
         this.fileChooser.nativeElement.value = '';
         this.invalidateDishes();
-        this.snackService.showSnackBar('Dish added!');
+        this.snackService.showSnackBar(Constants.Messages.DISH_ADDED);
       } else {
         this.snackService.showSnackBar(this.dish.name + ' already exists');
       }
     } else {
-      this.snackService.showSnackBar('Please make sure all data is entered');
+      this.snackService.showSnackBar(Constants.Messages.DISH_DATA_ERROR);
     }
   }
 

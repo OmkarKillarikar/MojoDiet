@@ -61,12 +61,11 @@ export class UserDashboardComponent {
         for (let i = 1; i < 7; i++) {
           this.diets[i] = new Diet();
           this.diets[i].date = new Date();
-          this.diets[i].date.setDate(this.diets[i - 1].date.getDate() + 1);
+          this.diets[i].date.setDate(today.getDate() + (difference + i));
         }
       }
     } else {
       this.invalidateTotalCost();
-
     }
   }
 
@@ -105,7 +104,7 @@ export class UserDashboardComponent {
 
   saveDiet(): void {
     this.storageService.saveDietPlan(this.diets);
-    this.snackService.showSnackBar(Constants.DIET_SAVED);
+    this.snackService.showSnackBar(Constants.Messages.DIET_SAVED);
   }
 
   invalidateDishList() {

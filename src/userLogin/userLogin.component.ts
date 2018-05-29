@@ -4,6 +4,7 @@ import {UserCredentials} from '../models/userCredentials';
 import {StorageService} from '../services/storageService';
 import {SnackBarService} from '../services/snackBarService';
 import {animate, style, transition, trigger} from '@angular/animations';
+import {Constants} from '../utils/constants';
 
 
 @Component({
@@ -54,18 +55,18 @@ export class UserLoginComponent {
       if (this.newCred.password === this.verifyPassword) {
         const isSuccess = this.localStorageService.saveUserCredentials(this.newCred);
         if (isSuccess) {
-          this.snackBarService.showSnackBar('Registered successfully');
+          this.snackBarService.showSnackBar(Constants.Messages.REGISTERED_SUCCESSFULLY);
           this.newCred = new UserCredentials();
           this.verifyPassword = '';
           this.isLogin = !this.isLogin;
         } else {
-          this.snackBarService.showSnackBar('Entered user name already exists');
+          this.snackBarService.showSnackBar(Constants.Messages.CRED_ALREADY_EXISTS);
         }
       } else {
-        this.snackBarService.showSnackBar('Passwords does not match');
+        this.snackBarService.showSnackBar(Constants.Messages.PASSWORD_NO_MATCH);
       }
     } else {
-      this.snackBarService.showSnackBar('Enter valid data');
+      this.snackBarService.showSnackBar(Constants.Messages.ENTER_VALID_CRED);
     }
   }
 
@@ -74,12 +75,14 @@ export class UserLoginComponent {
       const isCredValid = this.localStorageService.validateUserCredentials(this.loginCred);
       if (isCredValid) {
         this.localStorageService.setLoggedInUser(this.loginCred);
-        this.router.navigate(['/userDashboard']);
+        this.localStorageService.adminLoggedIn(false);
+        this.router.navigate(['/' + Constants.RoutePath.USER_DASHBOARD]);
+        this.snackBarService.showSnackBar(Constants.Messages.WELCOME_USER);
       } else {
-        this.snackBarService.showSnackBar('Invalid user name or password');
+        this.snackBarService.showSnackBar(Constants.Messages.ENTER_VALID_CRED);
       }
     } else {
-      this.snackBarService.showSnackBar('Enter valid data');
+      this.snackBarService.showSnackBar(Constants.Messages.ENTER_VALID_CRED);
     }
   }
 }

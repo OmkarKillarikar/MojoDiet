@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {SnackBarService} from '../services/snackBarService';
 import {StorageService} from '../services/storageService';
+import {Constants} from '../utils/constants';
 
 
 @Component({
@@ -17,13 +18,13 @@ export class AdminLoginComponent {
   }
 
   onSignIn(): void {
-    if (this.userName === 'admin' && this.password === 'MojoNetworks') {
+    if (this.userName === Constants.AdminCredentials.USER_NAME && this.password === Constants.AdminCredentials.PASSWORD) {
       this.storageService.clearUserLogin();
-      this.storageService.adminLoggedIn();
-      this.snackService.showSnackBar('Welcome Admin Mojo');
-      this.router.navigate(['/adminDashboard']);
+      this.storageService.adminLoggedIn(true);
+      this.snackService.showSnackBar(Constants.Messages.WELCOME_ADMIN);
+      this.router.navigate(['/' + Constants.RoutePath.ADMIN_DASHBOARD]);
     } else {
-      this.snackService.showSnackBar('Enter valid credentials');
+      this.snackService.showSnackBar(Constants.Messages.ENTER_VALID_CRED);
     }
   }
 }

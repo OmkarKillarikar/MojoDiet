@@ -1,27 +1,59 @@
 # MojoDiet
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
+
+
+## Development environment
+1. Node: 9.4.0
+2. Angular: 6.0.3
+3. Angular CLI: 6.0.5
+4. webpack: 4.8.3
+
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `ng serve --base-href '/mojoDiet/'` for a dev server. Navigate to `http://localhost:4200/`.
+The app will automatically reload if you change any of the source files.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Angular CLI is used as packaging tool which takes care of minifying, uglifying code
+and uses webpack under the hood 
 
-## Running unit tests
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Use the `--prod` flag for a production build.
+##### Deployment instructions
+1. run `ng build` or `ng build --prod`, Once build is generated find it in `/dist` folder with subfolder 'mojoDiet'
+2. Zip `mojoDiet` folder and transfer to server using SFTP and extract it to `var/www/html` (linux system)
+or any other server of your choice.
+3. access web app using ip address/domain of server followed by port and `/mojoDiet`
+e.g `http://192.168.1.92:8080/mojoDiet`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Project functionality
+##### Admin section:
+* Fixed credentials (admin/MojoNetworks).
+* Login session handled, will be automatically logged out once browser is closed.
+* After logging Two tabs are shown on dashboard (Show dishes and Add Dish):
+    * Show Dishes: 
+      * See previously added dishes.
+      * Delete dish feature.
+      * Warning shown if dishes are less than 7
+    * Add Dish: 
+      * Select image, enter name, price of dish and 
+      optional parameter dish type (Started/Main course),
+      * Dishes with duplicate names not allowed.
+    
+##### Customer user section:
+* User can register with credentials of his choice.
+* Login using registered credentials.
+* After logging Two tabs are shown on dashboard 
+(Available dishes and Plan Your Diet):
+    * Available Dishes:
+      * List of all dishes added by admin.
+      * Service wont be available if dishes are less than 7.
+    * Plan Your Diet:
+      * Week displayed from upcoming monday with option select dish
+    for each day.
+      * One dish can allocated only one of the days.
+      * User can delete selected dish
+      * Total amount shown for added dishes.
+      * User can save Diet plan.
