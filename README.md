@@ -30,7 +30,7 @@ e.g `http://192.168.1.92:8080/mojoDiet`
 
 ## Project functionality
 #### Admin section:
-* Fixed credentials (admin/MojoNetworks).
+* Fixed credentials stored as SHA256 hashed string, No plain text in code.
 * Login session handled, will be automatically logged out once browser is closed.
 * After logging Two tabs are shown on dashboard (Show dishes and Add Dish):
     * Show Dishes: 
@@ -39,7 +39,7 @@ e.g `http://192.168.1.92:8080/mojoDiet`
       * Warning shown if dishes are less than 7
     * Add Dish: 
       * Select image, enter name, price of dish and 
-      optional parameter dish type (Started/Main course),
+      optional parameter dish type (Starter/Main course),
       * Dishes with duplicate names not allowed.
     
 #### Customer user section:

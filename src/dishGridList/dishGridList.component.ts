@@ -9,9 +9,9 @@ import {StorageService} from '../services/storageService';
   styleUrls: ['./dishGridList.component.css']
 })
 export class DishGridListComponent {
-  @Input() private dishes: Array<Dish>;
-  @Input() private allowDelete: boolean;
-  @Output() private invalidateDishesData = new EventEmitter();
+  @Input() dishes: Array<Dish>;
+  @Input() allowDelete: boolean;
+  @Output() invalidateDishesData = new EventEmitter();
 
   constructor(private storageService: StorageService) {
     this.allowDelete = false;

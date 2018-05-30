@@ -18,7 +18,6 @@ export class UserDashboardComponent {
   dishesToSelect: Array<Dish>;
   diets: Array<Diet>;
   IMG_PLACEHOLDER = '././assets/ic_food_placeholder.png';
-  next: Date;
   totalCost: number;
 
   constructor(private router: Router

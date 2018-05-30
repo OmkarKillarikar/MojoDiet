@@ -12,11 +12,11 @@ import {Constants} from '../utils/constants';
 })
 
 export class AdminDashboardComponent implements AfterViewInit {
-  private img: string;
-  private dish: Dish;
-  private dishes: Array<Dish> = [];
-  private IMG_PLACEHOLDER = '././assets/ic_food_placeholder.png';
-  private elementImg;
+  img: string;
+  dish: Dish;
+  dishes: Array<Dish> = [];
+  IMG_PLACEHOLDER = '././assets/ic_food_placeholder.png';
+  elementImg;
   @ViewChild('fileChooser') fileChooser: any;
 
   constructor(private router: Router

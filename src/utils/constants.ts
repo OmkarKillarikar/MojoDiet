@@ -23,8 +23,8 @@ export class Constants {
   };
 
   static AdminCredentials = class {
-    public static USER_NAME = 'admin';
-    public static PASSWORD = 'MojoNetworks';
+    public static USER_NAME = '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918';
+    public static PASSWORD = '7b52ebade83a54ddc5dab5c686b284b8013fdef85beed93d8f55d890a7920e7d';
   };
 
   static RoutePath = class {
