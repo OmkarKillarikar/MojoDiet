@@ -76,7 +76,7 @@ export class UserLoginComponent {
       if (isCredValid) {
         this.localStorageService.setLoggedInUser(this.loginCred);
         this.localStorageService.adminLoggedIn(false);
-        this.router.navigate(['/' + Constants.RoutePath.USER_DASHBOARD]);
+        this.router.navigate(['/userDashboard']);
         this.snackBarService.showSnackBar(Constants.Messages.WELCOME_USER);
       } else {
         this.snackBarService.showSnackBar(Constants.Messages.ENTER_VALID_CRED);

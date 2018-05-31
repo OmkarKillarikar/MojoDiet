@@ -22,7 +22,7 @@ export class AppComponent {
   logout() {
     this.storageService.clearUserLogin();
     this.storageService.adminLoggedIn(false);
-    this.router.navigate(['/' + Constants.RoutePath.SELECT_USER]);
+    this.router.navigate(['/dashboard']);
     this.snackService.showSnackBar(Constants.Messages.LOGGED_OUT);
   }
 }

@@ -27,7 +27,7 @@ export class AdminLoginComponent {
       this.storageService.clearUserLogin();
       this.storageService.adminLoggedIn(true);
       this.snackService.showSnackBar(Constants.Messages.WELCOME_ADMIN);
-      this.router.navigate(['/' + Constants.RoutePath.ADMIN_DASHBOARD]);
+      this.router.navigate(['/adminDashboard']);
     } else {
       this.snackService.showSnackBar(Constants.Messages.ENTER_VALID_CRED);
     }

@@ -25,8 +25,8 @@ Use the `--prod` flag for a production build.
 1. run `ng build` or `ng build --prod`, Once build is generated find it in `/dist` folder with subfolder 'mojoDiet'
 2. Zip `mojoDiet` folder and transfer to server using SFTP and extract it to `var/www/html` (linux system)
 or any other server of your choice.
-3. access web app using ip address/domain of server followed by port and `/mojoDiet`
-e.g `http://192.168.1.92:8080/mojoDiet`
+3. access web app using ip address/domain of server followed by `/mojoDiet`
+e.g `http://192.168.1.92/mojoDiet`
 
 ## Project functionality
 #### Admin section:
