@@ -25,7 +25,9 @@
     "@angular/router": "^6.0.0",
     "core-js": "^2.5.4",
     "crypto-js": "^3.1.9-1",
+    "ng2-pica": "^1.2.8",
     "rxjs": "^6.0.0",
+    "rxjs-compat": "^6.2.0",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

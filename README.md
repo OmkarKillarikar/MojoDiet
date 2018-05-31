@@ -7,6 +7,7 @@
 2. Angular: 6.0.3
 3. Angular CLI: 6.0.5
 4. webpack: 4.8.3
+5. npm 5.6.0
 
 
 ## Development server
@@ -42,7 +43,7 @@ e.g `http://192.168.1.92/mojoDiet`
       optional parameter dish type (Starter/Main course),
       * Dishes with duplicate names not allowed.
     
-#### Customer user section:
+#### Customer section:
 * User can register with credentials of his choice.
 * Login using registered credentials.
 * After logging Two tabs are shown on dashboard 
@@ -51,9 +52,9 @@ e.g `http://192.168.1.92/mojoDiet`
       * List of all dishes added by admin.
       * Service wont be available if dishes are less than 7.
     * Plan Your Diet:
-      * Week displayed from upcoming monday with option select dish
-    for each day.
+      * Week displayed from upcoming monday with option to
+       select dish for each day.
       * One dish can allocated only one of the days.
-      * User can delete selected dish
+      * User can delete selected dish.
       * Total amount shown for added dishes.
       * User can save Diet plan.

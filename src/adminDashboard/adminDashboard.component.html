@@ -5,7 +5,7 @@
 
       <span *ngIf="dishes==null || dishes?.length==0">No Dishes Added</span>
 
-      <span class=" red" *ngIf="dishes==null || dishes?.length<7">
+      <span class="color-red" *ngIf="dishes==null || dishes?.length<7">
       Add at least 7 Dishes to make this service available for Customers
       </span>
 
@@ -27,16 +27,15 @@
 
             <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
               <img id="imgDish" style="height: 100px;width: 100px" src="{{img}}"/>
-
               <input #fileChooser (change)="onImagePicked($event)" type="file" accept="image/*">
             </div>
 
             <mat-form-field>
-              <input matInput type="text" placeholder="Dish Name" [(ngModel)]="dish.name">
+              <input matInput type="text" placeholder="Dish Name" [(ngModel)]="dish.name" maxlength="20">
             </mat-form-field>
 
             <mat-form-field>
-              <input matInput type="number" placeholder="Price" [(ngModel)]="dish.price">
+              <input matInput type="number" placeholder="Price" [(ngModel)]="dish.price" maxlength="5">
             </mat-form-field>
 
             <mat-radio-group [(ngModel)]="dish.type" fxLayoutGap="20px">

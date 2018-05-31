@@ -4,6 +4,7 @@ import {Dish} from '../models/dish';
 import {StorageService} from '../services/storageService';
 import {SnackBarService} from '../services/snackBarService';
 import {Constants} from '../utils/constants';
+import {Ng2PicaService} from 'ng2-pica';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,7 +23,8 @@ export class AdminDashboardComponent implements AfterViewInit {
   constructor(private router: Router
     , private element: ElementRef
     , private storageService: StorageService
-    , private snackService: SnackBarService) {
+    , private snackService: SnackBarService
+    , private ng2PicaService: Ng2PicaService) {
     if (!storageService.isAdminLoggedIn()) {
       router.navigate(['/']);
     }
@@ -37,14 +39,18 @@ export class AdminDashboardComponent implements AfterViewInit {
   onImagePicked(event) {
     this.elementImg = this.element.nativeElement.querySelector('#imgDish');
 
-    const reader = new FileReader();
+    this.ng2PicaService.resize(event.target.files, 60, 60).subscribe((result) => {
+      // this.dish.image = e.target.result;
+      this.elementImg.src = URL.createObjectURL(result);
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.dish.image = e.target.result;
+      };
 
-    reader.onload = (e: any) => {
-      this.dish.image = e.target.result;
-      this.elementImg.src = this.dish.image;
-    };
-
-    reader.readAsDataURL(event.target.files[0]);
+      reader.readAsDataURL(result);
+    }, error => {
+      console.error(error);
+    });
   }
 
   addDish() {

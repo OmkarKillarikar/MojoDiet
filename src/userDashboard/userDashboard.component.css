@@ -23,3 +23,7 @@
   transform: scale(1, 1);
   transition: transform .2s;
 }
+
+.diet-row-height {
+  height: 45px;
+}

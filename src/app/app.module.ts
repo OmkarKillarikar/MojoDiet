@@ -1,6 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
+import {Ng2PicaModule} from 'ng2-pica';
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {DashboardComponent} from '../selectUser/selectUser.component';
@@ -61,7 +62,8 @@ import {UserDashboardComponent} from '../userDashboard/userDashboard.component';
     MatSelectModule,
     MatIconModule,
     MatTooltipModule,
-    MatRadioModule
+    MatRadioModule,
+    Ng2PicaModule
   ],
   providers: [StorageService, SnackBarService],
   bootstrap: [AppComponent]

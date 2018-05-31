@@ -139,10 +139,7 @@ export class StorageService {
       const dietKey = Constants.LocalStorageKeys.DIET_PREFIX + this.getLoggedInUser().userName;
       const diets: Diet[] = JSON.parse(localStorage.getItem(dietKey));
       const dietStartDate = new Date(diets[0].date);
-      console.log(current.getFullYear());
-      if ((dietStartDate.getFullYear() < current.getFullYear())
-        || (dietStartDate.getMonth() < current.getMonth())
-        || (dietStartDate.getDay() < current.getDay())) {
+      if (dietStartDate.getTime() < current.getTime()) {
         localStorage.removeItem(dietKey);
         return;
       }

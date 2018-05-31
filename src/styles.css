@@ -113,6 +113,16 @@ mat-icon {
   display: block;
 }
 
+.color-red {
+  color: red;
+}
+
+.circular-img {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+}
+
 .selected-dish:hover {
   color: orangered;
   animation: shake 0.5s;
