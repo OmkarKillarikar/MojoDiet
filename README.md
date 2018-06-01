@@ -12,8 +12,9 @@
 
 ## Development server
 
-Run `ng serve --base-href '/mojoDiet/'` for a dev server. Navigate to `http://localhost:4200/`.
-The app will automatically reload if you change any of the source files.
+Run `ng serve --base-href '/mojoDiet/'` for a dev server. Navigate to `http://localhost:4200/mojoDiet`.
+The app will automatically reload if you change any of the source files. Optionally user `--port` flag
+to select custom port
 
 ## Build
 
@@ -24,14 +25,14 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 Use the `--prod` flag for a production build.
 ##### Deployment instructions
 1. run `ng build` or `ng build --prod`, Once build is generated find it in `/dist` folder with subfolder 'mojoDiet'
-2. Zip `mojoDiet` folder and transfer to server using SFTP and extract it to `var/www/html` (linux system)
+2. Zip `mojoDiet` folder and transfer to server using SFTP and extract it to `/var/www/html` (linux system)
 or any other server of your choice.
 3. access web app using ip address/domain of server followed by `/mojoDiet`
 e.g `http://192.168.1.92/mojoDiet`
 
 ## Project functionality
 #### Admin section:
-* Fixed credentials stored as SHA256 hashed string, No plain text in code.
+* Fixed credentials stored as **SHA256 hashed** string, No plain text in code.
 * Login session handled, will be automatically logged out once browser is closed.
 * After logging Two tabs are shown on dashboard (Show dishes and Add Dish):
     * Show Dishes: 
