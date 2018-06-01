@@ -11,7 +11,8 @@
 
 
 ## Development server
-
+Make sure Node and Npm is installed.
+After cloning repository run `npm install` to install all dependencies.
 Run `ng serve --base-href '/mojoDiet/'` for a dev server. Navigate to `http://localhost:4200/mojoDiet`.
 The app will automatically reload if you change any of the source files. Optionally user `--port` flag
 to select custom port
